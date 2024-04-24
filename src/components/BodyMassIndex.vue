@@ -1,11 +1,13 @@
 <script setup>
 import { ref, watch } from 'vue'
 
-// const emit = defineEmits([
-//   height, weight
-// ])
+const emit = defineEmits([
+ 'stats-entered'
+])
 
-
+function onStatsEntered() {
+  emit('stats-entered', height.value, weight.value)
+}
 
 const height = ref('')
 const weight = ref('')
@@ -17,7 +19,7 @@ const stats = [height, weight]
 
 <template>
   <div id="BMI">
-    <form>
+
     <h2> Enter your Height and Weight</h2>
 
       <label> Height in Meters: </label>
@@ -30,8 +32,8 @@ const stats = [height, weight]
 
     <br>
 
-    <button v-on:click="defineEmits([stats-entered])">Calculate</button>
-    </form>
+    <button v-on:click='onStatsEntered'>Calculate</button>
+
 
 
 
